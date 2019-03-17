@@ -167,9 +167,9 @@ class TT_RNN(Recurrent):
                              "1 + the number of the dimensions.")
 
         if self.debug:
-            print 'tt_input_shape = ' + str( self.tt_input_shape )
-            print 'tt_output_shape = ' + str( self.tt_output_shape )
-            print 'tt_ranks = ' + str( self.tt_ranks )
+            print('tt_input_shape = ' + str(self.tt_input_shape))
+            print('tt_output_shape = ' + str(self.tt_output_shape))
+            print('tt_ranks = ' + str(self.tt_ranks))
 
         np.random.seed(self.init_seed)
         total_length = np.sum(self.tt_input_shape * self.tt_output_shape *
@@ -200,13 +200,13 @@ class TT_RNN(Recurrent):
             if 0 < k:
                 self.inds[k - 1] = self.inds[k] + np.prod(self.shapes[k])
         if self.debug:
-            print 'self.shapes = ' + str(self.shapes)
+            print('self.shapes = ' + str(self.shapes))
 
         self.TT_size = total_length
         self.full_size = (np.prod(self.tt_input_shape) * np.prod(self.tt_output_shape))
         self.compress_factor = 1. * self.TT_size / self.full_size
-        print 'Compression factor = ' + str(self.TT_size) + ' / ' \
-              + str(self.full_size) + ' = ' + str(self.compress_factor)
+        print('Compression factor = ' + str(self.TT_size) + ' / '
+              + str(self.full_size) + ' = ' + str(self.compress_factor))
 
         self.recurrent_kernel = self.add_weight(
             shape=(self.units, self.units),
@@ -228,7 +228,7 @@ class TT_RNN(Recurrent):
 
         self.compress_factor = 1.*(local_cores_arr.size) / \
                                (np.prod(self.tt_input_shape)*np.prod(self.tt_output_shape))
-        print 'Compressrion factor = ' + str(self.compress_factor)
+        print('Compressrion factor = ' + str(self.compress_factor))
         self.built = True
 
     def preprocess_input(self, x, training=None):
@@ -456,9 +456,9 @@ class TT_GRU(Recurrent):
                              "1 + the number of the dimensions.")
 
         if self.debug:
-            print 'tt_input_shape = ' + str( self.tt_input_shape )
-            print 'tt_output_shape = ' + str( self.tt_output_shape )
-            print 'tt_ranks = ' + str( self.tt_ranks )
+            print('tt_input_shape = ' + str(self.tt_input_shape))
+            print('tt_output_shape = ' + str(self.tt_output_shape))
+            print('tt_ranks = ' + str(self.tt_ranks))
 
         np.random.seed(self.init_seed)
         total_length = np.sum(self.tt_input_shape * self.tt_output_shape *
@@ -489,13 +489,13 @@ class TT_GRU(Recurrent):
             if 0 < k:
                 self.inds[k - 1] = self.inds[k] + np.prod(self.shapes[k])
         if self.debug:
-            print 'self.shapes = ' + str(self.shapes)
+            print('self.shapes = ' + str(self.shapes))
 
         self.TT_size = total_length
         self.full_size = (np.prod(self.tt_input_shape) * np.prod(self.tt_output_shape))
         self.compress_factor = 1. * self.TT_size / self.full_size
-        print 'Compression factor = ' + str(self.TT_size) + ' / ' \
-              + str(self.full_size) + ' = ' + str(self.compress_factor)
+        print('Compression factor = ' + str(self.TT_size) + ' / '
+              + str(self.full_size) + ' = ' + str(self.compress_factor))
 
         self.recurrent_kernel = self.add_weight(
             shape=(self.units, self.units*3),
@@ -518,7 +518,7 @@ class TT_GRU(Recurrent):
         self.compress_factor = 1.*(local_cores_arr.size) / \
                                (np.prod(self.tt_input_shape)*np.prod(self.tt_output_shape))
 
-        print 'Compressrion factor = ' + str(self.compress_factor)
+        print('Compressrion factor = ' + str(self.compress_factor))
 
         self.built = True
 
@@ -753,9 +753,9 @@ class TT_LSTM(Recurrent):
                              "1 + the number of the dimensions.")
 
         if self.debug:
-            print 'tt_input_shape = ' + str( self.tt_input_shape )
-            print 'tt_output_shape = ' + str( self.tt_output_shape )
-            print 'tt_ranks = ' + str( self.tt_ranks )
+            print('tt_input_shape = ' + str(self.tt_input_shape))
+            print('tt_output_shape = ' + str(self.tt_output_shape))
+            print('tt_ranks = ' + str(self.tt_ranks))
 
         np.random.seed(self.init_seed)
         total_length = np.sum(self.tt_input_shape * self.tt_output_shape *
@@ -796,13 +796,13 @@ class TT_LSTM(Recurrent):
             if 0 < k:
                 self.inds[k - 1] = self.inds[k] + np.prod(self.shapes[k])
         if self.debug:
-            print 'self.shapes = ' + str(self.shapes)
+            print('self.shapes = ' + str(self.shapes))
 
         self.TT_size = total_length
         self.full_size = (np.prod(self.tt_input_shape) * np.prod(self.tt_output_shape))
         self.compress_factor = 1. * self.TT_size / self.full_size
-        print 'Compression factor = ' + str(self.TT_size) + ' / ' \
-              + str(self.full_size) + ' = ' + str(self.compress_factor)
+        print('Compression factor = ' + str(self.TT_size) + ' / '
+              + str(self.full_size) + ' = ' + str(self.compress_factor))
 
         self.recurrent_kernel = self.add_weight(
             shape=(self.units, self.units*4),
@@ -825,7 +825,7 @@ class TT_LSTM(Recurrent):
         self.compress_factor = 1.*(local_cores_arr.size) / \
                                (np.prod(self.tt_input_shape)*np.prod(self.tt_output_shape))
 
-        print 'Compressrion factor = ' + str(self.compress_factor)
+        print('Compressrion factor = ' + str(self.compress_factor))
 
         self.built = True
 

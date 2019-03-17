@@ -48,7 +48,7 @@ def load_data(inds, mode='train'):
     Y = np.zeros((N, 12), dtype='int8')
 
     for i in range(N):
-        print i
+        print(i)
         if mode=='train':
             read_in = open(data_path + 'actioncliptrain/' + tr_sample_filenames[inds[i]])
         elif mode == 'test':
@@ -76,6 +76,7 @@ use_TT = 0
 
 # Had to remove due to anonymity
 data_path = ''
+data_path = '/mnt/ttrnn/Hollywood2/'
 write_out_path = ''
 
 GLOBAL_MAX_LEN = 1496
@@ -155,7 +156,7 @@ model.compile(optimizer=Adam(1e-3), loss='binary_crossentropy')
 
 # Start training -------------------------------------------------------------------------------------------------------
 for l in range(501):
-    print 'iter ' + str(l)
+    print('iter ' + str(l))
     model.fit(X_train, Y_train, nb_epoch=1, batch_size=32, verbose=1, validation_split=.15)
 
     if l % 10 == 0:
@@ -164,7 +165,7 @@ for l in range(501):
         train_res = average_precision_score(Y_train, Y_hat)
         test_res = average_precision_score(Y_test, Y_pred)
 
-        print 'Training: '
-        print train_res
-        print 'Test: '
-        print test_res
+        print('Training: ')
+        print(train_res)
+        print('Test: ')
+        print(test_res)
