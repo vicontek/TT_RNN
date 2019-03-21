@@ -174,9 +174,9 @@ class TT_Layer(Layer):
             raise ValueError("The number of the TT-ranks should be "
                              "1 + the number of the dimensions.")
         if self.debug:
-            print 'tt_input_shape = ' + str(self.tt_input_shape)
-            print 'tt_output_shape = ' + str(self.tt_output_shape)
-            print 'tt_ranks = ' + str(self.tt_ranks)
+            print('tt_input_shape = ' + str(self.tt_input_shape))
+            print('tt_output_shape = ' + str(self.tt_output_shape))
+            print('tt_ranks = ' + str(self.tt_ranks))
 
         # Initialize the weights
         if self.init_seed is None:
@@ -225,14 +225,14 @@ class TT_Layer(Layer):
             if 0 < k:  # < self.num_dim-1:
                 self.inds[k - 1] = self.inds[k] + np.prod(self.shapes[k])
         if self.debug:
-            print 'self.shapes = ' + str(self.shapes)
+            print('self.shapes = ' + str(self.shapes))
 
         # Calculate and print the compression factor
         self.TT_size = total_length
         self.full_size = (np.prod(self.tt_input_shape) * np.prod(self.tt_output_shape))
         self.compress_factor = 1. * self.TT_size / self.full_size
-        print 'Compression factor = ' + str(self.TT_size) + ' / ' \
-              + str(self.full_size) + ' = ' + str(self.compress_factor)
+        print('Compression factor = ' + str(self.TT_size) + ' / '
+              + str(self.full_size) + ' = ' + str(self.compress_factor))
 
     def call(self, x, mask=None):
         # theano.scan doesn't seem to work when intermediate results' changes in shape -- Alexander
